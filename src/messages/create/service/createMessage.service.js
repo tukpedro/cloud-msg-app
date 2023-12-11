@@ -24,6 +24,6 @@ module.exports.createMessage = async body => {
         return { ...body };
     } catch (err) {
         console.error(err);
-        return err;
+        return false;
     }
 }
