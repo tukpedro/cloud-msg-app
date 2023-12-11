@@ -1,9 +1,9 @@
 const { DynamoDBClient, CreateTableCommand, ListTablesCommand } = require('@aws-sdk/client-dynamodb');
-const { region } = require('../config/index');
+const { region, key_type, attribute_type } = require('../config/index');
 
 const dynamoClient = new DynamoDBClient({ region });
 
-module.exports.checkCreateTable = async (tableName, attribiteName) => {
+module.exports.checkCreateTable = async (tableName, attributeName) => {
     const data = await dynamoClient.send(new ListTablesCommand({}));
     const existingTables = data.TableNames;
 
@@ -14,10 +14,10 @@ module.exports.checkCreateTable = async (tableName, attribiteName) => {
     const params = {
         TableName: tableName,
         KeySchema: [
-            { AttributeName: attribiteName, KeyType: "HASH" },
+            { AttributeName: attributeName, KeyType: key_type },
         ],
         AttributeDefinitions: [
-            { AttributeName: attribiteName, AttributeType: "S" },
+            { AttributeName: attributeName, AttributeType: attribute_type },
         ],
         ProvisionedThroughput: {
             ReadCapacityUnits: 1,
@@ -27,9 +27,9 @@ module.exports.checkCreateTable = async (tableName, attribiteName) => {
 
     try {
         const results = await dynamoClient.send(new CreateTableCommand(params));
-        console.log("Tabela de usuários criada:", results);
+        console.log("User table created:", results);
     } catch (error) {
-        console.error("Não foi possível criar a tabela:", error);
+        console.error("Create table error:", error);
     }
 }
 

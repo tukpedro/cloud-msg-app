@@ -1,7 +1,16 @@
 module.exports = {
 	region: process.env.REGION,
+	key_type: process.env.KEY_TYPE,
+	attribute_type: process.env.ATTRIBUTE_TYPE,
 	users_table: process.env.USERS,
+	users_pk: process.env.USERS_PK,
 	messages_table: process.env.MESSAGES,
+	messages_pk: process.env.MESSAGES_PK,
+	messages_key_type: process.env.MESSAGES_KEY_TYPE,
+	messages_attribute_type: process.env.MESSAGES_ATTRIBUTE_TYPE,
 	chats_table: process.env.CHATS,
+	chats_pk: process.env.CHATS_PK,
+	chats_key_type: process.env.CHATS_KEY_TYPE,
+	chats_attribute_type: process.env.CHATS_ATTRIBUTE_TYPE,
 	queue_name: process.env.QUEUE,
 };
