@@ -28,7 +28,6 @@ module.exports.checkCreateTable = async (tableName, attribiteName) => {
     try {
         const results = await dynamoClient.send(new CreateTableCommand(params));
         console.log("Tabela de usuários criada:", results);
-        return results;
     } catch (error) {
         console.error("Não foi possível criar a tabela:", error);
     }
