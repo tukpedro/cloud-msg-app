@@ -22,8 +22,8 @@ module.exports.createMessage = async body => {
     try {
         await dynamoClient.send(new PutItemCommand(params));
         return { ...body };
-    } catch (err) {
-        console.error(err);
+    } catch (error) {
+        console.error(error);
         return false;
     }
 }
