@@ -1,0 +1,44 @@
+service: cloud-msg-app
+
+frameworkVersion: '3'
+
+provider:
+    name: aws
+    runtime: nodejs18.x
+
+custom:
+    functions:
+        timeout: 1500
+        memorySize: 256
+
+functions:
+    create-user:
+        handler: src/users/create/handler/createUser.handler
+        timeout: ${self:custom.functions.timeout}
+        events:
+            - http:
+                  path: /users
+                  method: post
+                  cors: true
+
+    get-user:
+        handler: src/users/get/handler/getUser.handler
+        timeout: ${self:custom.functions.timeout}
+        events:
+            - http:
+                  path: /users/{phone}
+                  method: get
+                  cors: true
+
+    create-message:
+        handler: src/messages/create/handler/createMessage.handler
+        timeout: ${self:custom.functions.timeout}
+        events:
+            - http:
+                  path: /messages
+                  method: post
+                  cors: true
+
+plugins:
+    - serverless-dotenv-plugin
+    - serverless-offline
