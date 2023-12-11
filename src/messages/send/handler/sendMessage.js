@@ -20,11 +20,11 @@ module.exports.handler = async (event) => {
 
     const sendToQueueResponse = await sendMessageToSQS(sender_phone, receiver_phone, content);
     if (!sendToQueueResponse)
-        return returnResponseHelper({ error: "Error to send message to SQS" }, 500);
+        return returnResponseHelper({ error: "Error sending message to SQS" }, 500);
 
     const saveMessageResponse = await createMessage(parsedBody);
     if (!saveMessageResponse)
-        return returnResponseHelper({ error: "Error to save message" }, 500);
+        return returnResponseHelper({ error: "Error saving message on the database" }, 500);
 
     return returnResponseHelper({ message: "Message sent to SQS" }, 201);
 }
