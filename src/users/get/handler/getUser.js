@@ -8,6 +8,11 @@ module.exports.handler = async event => {
     const { phone } = pathParameters;
     if (!phone) return returnResponseHelper({ error: "Invalid phone" }, 400);
 
+    if (!validatePhoneNumber(phone)) {
+        console.error("Invalid phone number:", phone);
+        return;
+    }
+
     try {
         return returnResponseHelper(await getUser(phone), 200);
     } catch (error) {

@@ -1,7 +1,6 @@
 const { DynamoDBClient, QueryCommand } = require('@aws-sdk/client-dynamodb');
 const { marshall, unmarshall } = require('@aws-sdk/util-dynamodb');
 const { region, users_table } = require('../../../config/index');
-const { checkCreateTable } = require('../../../common/check-create-table');
 
 const dynamoClient = new DynamoDBClient({ region });
 
