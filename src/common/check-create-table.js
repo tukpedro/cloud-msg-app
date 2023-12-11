@@ -4,7 +4,6 @@ const { region } = require('../config/index');
 const dynamoClient = new DynamoDBClient({ region });
 
 module.exports.checkCreateTable = async (tableName, attribiteName) => {
-
     const data = await dynamoClient.send(new ListTablesCommand({}));
     const existingTables = data.TableNames;
 
