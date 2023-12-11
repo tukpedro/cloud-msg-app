@@ -24,10 +24,10 @@ module.exports.sendMessageToSQS = async (senderPhone, receiverPhone, content) =>
 
     try {
         const data = await sqsClient.send(new SendMessageCommand(params));
-        console.log("Message sento to Queue, ID:", data.MessageId);
+        console.log("Message sent to Queue, ID:", data.MessageId);
         return { ...data };
     } catch (error) {
-        console.error("Erro ao enviar mensagem para SQS:", error);
+        console.error("Error sending to SQS:", error);
         return false;
     }
 }
