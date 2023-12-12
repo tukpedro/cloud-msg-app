@@ -1,5 +1,5 @@
 const { getUser } = require("../../../../users/get/service/getUser.service");
-const returnResponseHelper = require("../../../../common/return-response.helper");
+const { returnResponseHelper } = require("../../../../common/return-response.helper");
 const { receiveMessages } = require("../service/recieveMessage.service");
 const { validatePhoneNumber } = require("../../../../common/validate-phone");
 const { deleteMessageFromSQS } = require("../../delete/service/deleteMessage.service");

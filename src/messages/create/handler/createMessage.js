@@ -1,4 +1,4 @@
-const returnResponseHelper = require("../../../common/return-response.helper");
+const { returnResponseHelper } = require("../../../common/return-response.helper");
 const { getUser } = require("../../../users/get/service/getUser.service");
 const { createMessage } = require("../service/createMessage.service");
 

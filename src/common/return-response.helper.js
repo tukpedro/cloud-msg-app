@@ -1,4 +1,4 @@
-module.exports = (result, statusCode) => {
+module.exports.returnResponseHelper = (result, statusCode) => {
 	return {
 		statusCode,
 		headers: {

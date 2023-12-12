@@ -1,4 +1,4 @@
-const returnResponseHelper = require("../../../common/return-response.helper");
+const { returnResponseHelper } = require("../../../common/return-response.helper");
 const { createUser } = require("../service/createUser.service");
 
 module.exports.handler = async event => {
