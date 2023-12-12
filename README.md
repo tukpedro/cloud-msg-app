@@ -9,7 +9,7 @@
 
 ## About <a name = "about"></a>
 
-Cloud-Msg-App is a scalable messaging platform designed to operate seamlessly on Kubernetes, integrating SNS, SQS, and MySQL for efficient communication. This project aims to provide a reliable and efficient means of handling large-scale messaging needs.
+Cloud-Msg-App is a scalable messaging platform designed to operate seamlessly on Kubernetes, integrating SNS, SQS, and DynamoDB for efficient communication. This project aims to provide a practical learning experience for AWS cloud resources, consciously disregarding security best practices for the purpose of testing and exploring the AWS cloud environment without constraints.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
