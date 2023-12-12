@@ -12,5 +12,5 @@ module.exports = {
 	chats_pk: process.env.CHATS_PK,
 	chats_key_type: process.env.CHATS_KEY_TYPE,
 	chats_attribute_type: process.env.CHATS_ATTRIBUTE_TYPE,
-	queue_name: process.env.QUEUE,
+	queue_name: `${process.env.QUEUE}.fifo`,
 };
