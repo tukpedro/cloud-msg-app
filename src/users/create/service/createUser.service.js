@@ -1,4 +1,4 @@
-const { DynamoDBClient, PutItemCommand } = require('@aws-sdk/client-dynamodb');
+const { DynamoDBClient, PutItemCommand, DescribeTableCommand } = require('@aws-sdk/client-dynamodb');
 const { marshall } = require('@aws-sdk/util-dynamodb');
 const { region, users_table, users_pk } = require('../../../config/index');
 const { checkCreateTable } = require('../../../common/check-create-table');

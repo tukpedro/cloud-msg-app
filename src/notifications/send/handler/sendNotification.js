@@ -19,5 +19,5 @@ module.exports.handler = async event => {
     const checkPhoneInDb = await getUser(receiverPhone);
     if (!checkPhoneInDb) return returnResponseHelper({ error: "User not found" }, 404);
 
-    return returnResponseHelper(await sendNotificationViaSNS(parsedBody), 201);
+    return returnResponseHelper(await sendNotificationViaSNS(message, receiverPhone), 201);
 }
