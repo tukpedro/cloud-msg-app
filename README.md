@@ -6,7 +6,6 @@
 -   [Getting Started](#getting_started)
 -   [Prerequisites](#prequisites)
 -   [Project setup](#setup)
--   [Contributing](../CONTRIBUTING.md)
 
 ## About <a name = "about"></a>
 
