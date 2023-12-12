@@ -40,13 +40,27 @@ functions:
                   cors: true
 
     send-message:
-        handler: src/messages/send/handler/sendMessage.handler
+        handler: src/messages/queue/send/handler/sendMessage.handler
         timeout: ${self:custom.functions.timeout}
         events:
             - http:
                   path: /messages/send
                   method: post
                   cors: true
+
+    receive-message:
+        handler: src/messages/queue/recieve/handler/recieveMessage.handler
+        timeout: ${self:custom.functions.timeout}
+        events:
+            - http:
+                  path: /recieve
+                  method: get
+                  cors: true
+                  request:
+                      parameters:
+                          querystrings:
+                              phone: true
+                              messageGroupId: true
 
 plugins:
     - serverless-dotenv-plugin
