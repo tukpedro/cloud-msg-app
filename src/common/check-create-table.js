@@ -26,8 +26,8 @@ module.exports.checkCreateTable = async (tableName, attributeName) => {
     };
 
     try {
-        const results = await dynamoClient.send(new CreateTableCommand(params));
-        console.log("User table created:", results);
+        await dynamoClient.send(new CreateTableCommand(params));
+        await new Promise(resolve => setTimeout(resolve, 10000));
     } catch (error) {
         console.error("Create table error:", error);
     }

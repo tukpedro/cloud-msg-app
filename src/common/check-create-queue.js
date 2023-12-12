@@ -1,4 +1,4 @@
-const { SQSClient, ListQueuesCommand, CreateQueueCommand } = require("@aws-sdk/client-sqs");
+const { SQSClient, ListQueuesCommand, CreateQueueCommand, GetQueueUrlCommand } = require("@aws-sdk/client-sqs");
 const { region } = require("../config");
 
 const sqsClient = new SQSClient({ region });
@@ -11,13 +11,18 @@ module.exports.checkCreateQueue = async (queueName) => {
         const queueExists = queues.some(url => url.includes(queueName));
 
         if (!queueExists) {
-            const createQueueData = await sqsClient.send(new CreateQueueCommand({ QueueName: queueName }));
-            console.log(`Created queue: ${createQueueData.QueueUrl}`);
-            return { queueUrl: createQueueData.QueueUrl }
+            const { QueueUrl } = await sqsClient.send(new CreateQueueCommand({
+                QueueName: queueName,
+                Attributes: {
+                    FifoQueue: 'true',
+                    ContentBasedDeduplication: 'true',
+                }
+            }));
+            console.log(`Created queue: ${QueueUrl}`);
+            return { QueueUrl }
         } else {
-            console.log(`Queue already exists`);
-            const url = queues.find(url => url.includes(queueName));
-            return { queueUrl: url };
+            const { QueueUrl } = await sqsClient.send(new GetQueueUrlCommand({ QueueName: queueName }));
+            return { QueueUrl };
         }
     } catch (error) {
         console.error("Check/Create queue error:", error);
