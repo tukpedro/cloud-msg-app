@@ -23,7 +23,7 @@ These instructions will get your copy of the project up and running on your loca
 
 ## 🛠️ Project setup <a name = "setup"></a>
 
-To get a development environment running, clone the repository and install the dependencies:
+To get a development environment running, clone the repository and install all required dependencies:
 
 ### Cloning the repository
 
